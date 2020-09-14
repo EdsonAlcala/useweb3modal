@@ -16,6 +16,9 @@
 
 - account header
 
+- Review this code https://github.com/iearn-finance/ygov-finance/blob/master/src/components/unlock/hooks.jsx
+https://github.com/iearn-finance/ygov-finance/blob/master/src/components/unlock/unlock.jsx
+
 - create spending view
 
 - Extend or Create wrapper of web3-react for the other properties
