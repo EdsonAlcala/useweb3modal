@@ -18,9 +18,6 @@ const ContentWrapper = styled.div`
   ${({ theme }) => theme.mediaWidth.upToMedium`padding: 1rem`};
 `
 
-
-
-
 interface ModalErrorProps {
   error: Error
 }

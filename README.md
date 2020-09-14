@@ -1,8 +1,8 @@
-# Croissant Finance
-
 # useWeb3Wallet
 
-# Libraries
+Simple Web3 Modal 
 
-Polished
-polished
+### Ideas
+
+- I can pass views
+- I need to define views

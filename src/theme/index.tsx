@@ -3,7 +3,6 @@ import { Colors } from './styled'
 import { ThemeProvider as StyledComponentsThemeProvider, DefaultTheme, css } from 'styled-components'
 import { useMemo } from 'react'
 
-
 const MEDIA_WIDTHS = {
   upToExtraSmall: 500,
   upToSmall: 600,
