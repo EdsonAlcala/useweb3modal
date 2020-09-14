@@ -1,8 +1,26 @@
 # useWeb3Wallet
 
+- Create README.md
+
+- Create scripts
+
+"clean": "rm -rf ./lib",
+"prebuild": "yarn clean",
+"build": "tsc --build \"./tsconfig.json\"",
+"copy-files": "copyfiles -u 1 src/style/base.css lib/",
+"postbuild": "yarn run copy-files",
+
+- Create circleci
+
+- account details section
+
+- account header
+
 - create spending view
 
-- Create wrapper of web3-react for the other properties
+- Extend or Create wrapper of web3-react for the other properties
+- Web3ReactManager
+- eagerconnect?
 
 to have something like const { isConnected } = useWalletProvider()
 

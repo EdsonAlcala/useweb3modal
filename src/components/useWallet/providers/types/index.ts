@@ -2,7 +2,7 @@ import { AbstractConnector } from "@web3-react/abstract-connector"
 
 type Image = string
 
-type WalletType = "web"
+type WalletType = "web" | "mobile"
 
 export interface IWalletProvider {
     id: string;

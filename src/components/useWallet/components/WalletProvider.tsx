@@ -5,8 +5,8 @@ interface InfoCardProps {
   active?: boolean
 }
 
-// TODO: Change background color background-color: ${({ theme, active }) => (active ? theme.bg3 : theme.bg2)};
-const InfoCard = styled.button<InfoCardProps>`
+const InfoCard = styled.button<{ active?: boolean }>`
+  background-color: ${({ theme, active }) => (active ? theme.bg3 : theme.bg2)};
   padding: 1rem;
   outline: none;
   border: 1px solid;
@@ -15,7 +15,7 @@ const InfoCard = styled.button<InfoCardProps>`
   &:focus {
     box-shadow: 0 0 0 1px ${({ theme }) => theme.primary1};
   }
-  border-color: ${({ theme, active }) => (active ? 'transparent' : '#EDEEF2')};
+  border-color: ${({ theme, active }) => (active ? 'transparent' : theme.bg3)};
 `
 
 const OptionCard = styled(InfoCard as any)`
@@ -31,21 +31,19 @@ interface ProviderCardClickable {
   clickable?: boolean
 }
 
-const OptionCardClickable = styled(OptionCard as any) <ProviderCardClickable>`
+const OptionCardLeft = styled.div`
+  ${({ theme }) => theme.flexColumnNoWrap};
+  justify-content: center;
+  height: 100%;
+`
+
+const OptionCardClickable = styled(OptionCard as any) <{ clickable?: boolean }>`
   margin-top: 0;
   &:hover {
     cursor: ${({ clickable }) => (clickable ? 'pointer' : '')};
-    border: ${({ clickable }) => (clickable ? `1px solid red` : ``)};
+    border: ${({ clickable, theme }) => (clickable ? `1px solid ${theme.primary1}` : ``)};
   }
   opacity: ${({ disabled }) => (disabled ? '0.5' : '1')};
-  background-color: white;
-`
-
-const OptionCardLeft = styled.div`
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  height: 100%;
 `
 
 // TODO 
@@ -113,8 +111,7 @@ const CircleWrapper = styled.div`
   align-items: center;
 `
 
-export const WalletProvider: React.FC<WalletCardOption> = (props: WalletCardOption) => {
-  const { id, onClick, clickable, active, header, subheader, icon, color } = props
+export const WalletProvider: React.FC<WalletCardOption> = ({ active, clickable = true, id, onClick, header, subheader, icon, color }) => {
   return (
     <OptionCardClickable id={id} onClick={onClick} clickable={clickable && !active} active={active}>
       <OptionCardLeft>

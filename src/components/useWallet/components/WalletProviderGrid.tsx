@@ -1,9 +1,10 @@
-import React, { useState, PropsWithChildren } from 'react'
+import React, { useState } from 'react'
+import { isMobile } from 'react-device-detect'
 import { useWeb3React, UnsupportedChainIdError } from '@web3-react/core'
 import styled from 'styled-components'
 
 import { getAllWalletProviders, IWalletProvider } from '../providers'
-import { injected } from '../connectors'
+import { injected, portis } from '../connectors'
 
 import { WalletProvider } from './WalletProvider'
 import { AbstractConnector } from '@web3-react/abstract-connector'
@@ -31,64 +32,6 @@ const WALLET_VIEWS = {
 export const WalletProviderGrid: React.FC<{}> = () => {
 
   const { active, account, connector, activate, error } = useWeb3React()
-
-  const getWalletProviderComponents = () => {
-    const isMetamask = (window as any).ethereum && (window as any).ethereum.isMetaMask // TODO: Review metamask documentation
-    console.log("isMetamask", isMetamask)
-
-    return getAllWalletProviders().map((item: IWalletProvider) => {
-      if (item.connector === injected) {
-        //  don't show injected if there's no injected provider
-        if (!((window as any).web3 || (window as any).ethereum)) {
-          if (item.name === 'MetaMask') {
-            return (
-              <WalletProvider
-                id={`connect-${item.id}`}
-                key={item.id}
-                icon={item.logo}
-                color={'#E8831D'}
-                header={'Install Metamask'}
-                subheader={null}
-                href={'https://metamask.io/'}
-              />
-            )
-          } else {
-            return null //dont want to return install twice
-          }
-        }
-        // don't return metamask if injected provider isn't metamask
-        else if (item.name === 'MetaMask' && !isMetamask) {
-          return null
-        }
-        // likewise for generic
-        else if (item.name === 'Injected' && isMetamask) {
-          return null
-        }
-      }
-
-      return (
-        // <ThemeProvider>
-        <WalletProvider
-          key={item.id}
-          id={item.id}
-          icon={item.logo}
-          header={item.name}
-          subheader=""
-          href={item.href}
-          color={item.color}
-          active={item.connector === connector}
-          onClick={() => {
-            item.connector === connector
-              ? setWalletView(WALLET_VIEWS.ACCOUNT)
-              : !item.href && tryActivation(item.connector)
-          }}
-        />
-        // </ThemeProvider>
-      )
-    })
-  }
-
-  // const { active, account, connector, activate, error } = useWeb3React()
 
   const [walletView, setWalletView] = useState(WALLET_VIEWS.ACCOUNT)
 
@@ -130,6 +73,90 @@ export const WalletProviderGrid: React.FC<{}> = () => {
             setPendingError(true)
           }
         })
+  }
+
+  const getWalletProviderComponents = () => {
+    const isMetamask = (window as any).ethereum && (window as any).ethereum.isMetaMask // TODO: Review metamask documentation
+    console.log("isMetamask", isMetamask)
+
+    return getAllWalletProviders().map((item: IWalletProvider) => {
+
+      if (isMobile) {
+        //disable portis on mobile for now
+        if (item.connector === portis) {
+          return null
+        }
+
+        if (!(window as any).web3 && !(window as any).ethereum && item.mobile) {
+          return (
+            //   onClick=
+            <WalletProvider
+              active={item.connector && item.connector === connector}
+              id={`connect-${item.id}`}
+              key={item.id}
+              icon={item.logo}
+              color={item.color}
+              header={item.name}
+              subheader={null}
+              href={item.href}
+              onClick={() => {
+                item.connector !== connector && !item.href && tryActivation(item.connector)
+              }}
+            />
+          )
+        }
+        return null
+      }
+
+      if (item.connector === injected) {
+        //  don't show injected if there's no injected provider
+        if (!((window as any).web3 || (window as any).ethereum)) {
+          if (item.name === 'MetaMask') {
+            return (
+              <WalletProvider
+                id={`connect-${item.id}`}
+                key={item.id}
+                icon={item.logo}
+                color={'#E8831D'}
+                header={'Install Metamask'}
+                subheader={null}
+                href={'https://metamask.io/'}
+              />
+            )
+          } else {
+            return null //dont want to return install twice
+          }
+        }
+        // don't return metamask if injected provider isn't metamask
+        else if (item.name === 'MetaMask' && !isMetamask) {
+          return null
+        }
+        // likewise for generic
+        else if (item.name === 'Injected' && isMetamask) {
+          return null
+        }
+      }
+
+      return (
+        !isMobile &&
+        !item.mobileOnly && (
+          <WalletProvider
+            key={item.id}
+            id={item.id}
+            icon={item.logo}
+            header={item.name}
+            subheader=""
+            href={item.href}
+            color={item.color}
+            active={item.connector === connector}
+            onClick={() => {
+              item.connector === connector
+                ? setWalletView(WALLET_VIEWS.ACCOUNT)
+                : !item.href && tryActivation(item.connector)
+            }}
+          />)
+      )
+    })
   }
 
   return (

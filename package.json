@@ -2,6 +2,13 @@
   "name": "croissant-finance",
   "version": "0.1.0",
   "private": true,
+  "main": "lib/src/index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
   "dependencies": {
     "@ethersproject/providers": "^5.0.8",
     "@reach/dialog": "^0.11.2",
@@ -52,6 +59,7 @@
     ]
   },
   "devDependencies": {
-    "@types/styled-components": "^5.1.3"
+    "@types/styled-components": "^5.1.3",
+    "copyfiles": "^2.3.0"
   }
 }
