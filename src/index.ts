@@ -1,1 +1,1 @@
-export { useWalletModal, ModalWalletProvider } from './components'
+export { } from './components'

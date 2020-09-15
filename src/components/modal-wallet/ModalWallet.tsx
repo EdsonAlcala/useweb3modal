@@ -1,15 +1,16 @@
 import React from 'react'
 import styled from 'styled-components';
 
-import Modal from '../../Modal'
+import { Wallet } from '../wallet';
 
-import { Wallet } from './Wallet';
-import { ReactComponent as Close } from './assets/images/x.svg'
+import Modal from './Modal'
+
+import Close from './x.svg';
 import { UnsupportedChainIdError, useWeb3React } from '@web3-react/core';
 
 interface IModalWalletProps {
-    isOpen: boolean
-    onClose: () => void
+  isOpen: boolean
+  onClose: () => void
 }
 
 const Content = styled.div`
@@ -69,26 +70,26 @@ const Title = styled.div`
 `
 
 export const ModalWallet: React.FC<IModalWalletProps> = ({ isOpen, onClose }) => {
-    const { active, account, connector, activate, error } = useWeb3React()
+  const { active, account, connector, activate, error } = useWeb3React()
 
-    return (
-        <Modal
-            isOpen={isOpen}
-            onDismiss={onClose}
-            minHeight={false}
-            maxHeight={90}>
-            <Content>
-                <Header>
-                    <HeaderRow>
-                        <CloseIcon onClick={onClose}>
-                            <CloseColor />
-                        </CloseIcon>
-                        {!error && <Title>Connect to a wallet</Title>}
-                        {error && <Title>{error instanceof UnsupportedChainIdError ? 'Wrong Network' : 'Error connecting'}</Title>}
-                    </HeaderRow>
-                </Header>
-                <Wallet />
-            </Content>
-        </Modal>
-    )
+  return (
+    <Modal
+      isOpen={isOpen}
+      onDismiss={onClose}
+      minHeight={false}
+      maxHeight={90}>
+      <Content>
+        <Header>
+          <HeaderRow>
+            <CloseIcon onClick={onClose}>
+              <CloseColor />
+            </CloseIcon>
+            {!error && <Title>Connect to a wallet</Title>}
+            {error && <Title>{error instanceof UnsupportedChainIdError ? 'Wrong Network' : 'Error connecting'}</Title>}
+          </HeaderRow>
+        </Header>
+        <Wallet />
+      </Content>
+    </Modal>
+  )
 }

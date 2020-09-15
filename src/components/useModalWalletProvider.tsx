@@ -1,6 +1,6 @@
 import React, { useContext, PropsWithChildren, useState } from "react"
 
-import { ModalWallet } from './ModalWallet'
+import { ModalWallet } from './modal-wallet'
 
 interface IModalWalletProvider {
     showWalletModal: () => void

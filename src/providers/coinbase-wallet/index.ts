@@ -2,7 +2,6 @@ import { walletlink } from '../../connectors'
 
 import { IWalletProvider } from "../types";
 
-// @ts-ignore
 import CoinbaseWalletLogo from './coinbaseWalletIcon.svg';
 
 export const WALLET_LINK: IWalletProvider = {

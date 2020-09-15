@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import { isMobile } from 'react-device-detect'
 import { useWeb3React, UnsupportedChainIdError } from '@web3-react/core'
+import { AbstractConnector } from '@web3-react/abstract-connector'
+
 import styled from 'styled-components'
 
-import { getAllWalletProviders, IWalletProvider } from '../providers'
-import { injected, portis } from '../connectors'
+import { getAllWalletProviders, IWalletProvider } from '../../providers'
+import { injected, portis } from '../../connectors'
 
 import { WalletProvider } from './WalletProvider'
-import { AbstractConnector } from '@web3-react/abstract-connector'
 
 const Wrapper = styled.div`
   display: flex;

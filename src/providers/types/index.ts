@@ -9,7 +9,7 @@ export interface IWalletProvider {
     name: string;
     description?: string;
     type: WalletType;
-    logo: Image;
+    logo: any;
     href: string | null
     color: string
     mobile?: boolean // to review, taken from uniswap

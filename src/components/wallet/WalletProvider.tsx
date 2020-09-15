@@ -112,6 +112,7 @@ const CircleWrapper = styled.div`
 `
 
 export const WalletProvider: React.FC<WalletCardOption> = ({ active, clickable = true, id, onClick, header, subheader, icon, color }) => {
+  const Icon = icon as any
   return (
     <OptionCardClickable id={id} onClick={onClick} clickable={clickable && !active} active={active}>
       <OptionCardLeft>
@@ -130,7 +131,7 @@ export const WalletProvider: React.FC<WalletCardOption> = ({ active, clickable =
         {subheader && <SubHeader>{subheader}</SubHeader>}
       </OptionCardLeft>
       <IconWrapper size={48}>
-        <img src={icon} alt={'Icon'} />
+        <Icon />
       </IconWrapper>
     </OptionCardClickable>
 

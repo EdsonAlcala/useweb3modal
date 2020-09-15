@@ -1,1 +1,3 @@
-export * from './useWallet'
+export * from './wallet'
+export * from './modal-wallet'
+export * from './useModalWalletProvider'
