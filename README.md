@@ -1,8 +1,13 @@
-# useWeb3Wallet
+# Web3 React Wallet
 
-Simple Web3 Modal 
+Web3 React with modal wallet integrated
 
-### Ideas
+### Getting Started
 
-- I can pass views
-- I need to define views
+```
+> git clone git@github.com:EdsonAlcala/useweb3modal.git
+
+```
+### TODO
+
+- Allow users to configure views [ ]
