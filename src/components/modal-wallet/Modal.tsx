@@ -82,14 +82,14 @@ interface ModalProps {
   children?: React.ReactNode
 }
 
-export default function Modal({
+export const Modal: React.FC<ModalProps> = ({
   isOpen,
   onDismiss,
   minHeight = false,
   maxHeight = 50,
   initialFocusRef,
   children
-}: ModalProps) {
+}: ModalProps) => {
   const fadeTransition = useTransition(isOpen, null, {
     config: { duration: 200 },
     from: { opacity: 0 },

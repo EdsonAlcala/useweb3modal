@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { Wallet } from '../wallet';
 
-import Modal from './Modal'
+import { Modal } from './Modal'
 
 import Close from './x.svg';
 import { UnsupportedChainIdError, useWeb3React } from '@web3-react/core';
