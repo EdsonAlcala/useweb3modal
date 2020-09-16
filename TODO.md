@@ -1,7 +1,6 @@
 # useWeb3Wallet
 
 - add instructions for environment variables
-- Create circleci
 - account details section
 - account header
 - publish
@@ -19,6 +18,7 @@ https://github.com/iearn-finance/ygov-finance/blob/master/src/components/unlock/
 - active, account, connector, activate, error
 - active state?
 - Define the other views (account view, connect view)
+- add husky
 
 Views
   Account (wallet)
