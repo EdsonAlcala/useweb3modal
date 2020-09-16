@@ -7,8 +7,12 @@ custom hooks to add wallets connections.
 
 ### Hooks
 
+Same as Web3 React but we include an additional hook:
+
 - useModalWallet
-- useWeb3React
+
+Example:
+
 
 ### Getting Started
 
@@ -29,6 +33,22 @@ or
 > yarn
 
 ```
-### TODO
+
+### Commands
+
+```
+> yarn start:dev
+
+> yarn compile
+
+> yarn storybook
+
+```
+
+### Roadmap
+
+- Add ledger support [ ]
 
 - Allow users to configure views [ ]
+
+- Publish storybook as github page [ ]
