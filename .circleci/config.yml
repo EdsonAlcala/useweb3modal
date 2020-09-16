@@ -94,14 +94,11 @@ workflows:
   version: 2
   build-deploy:
     jobs:
-      - setup:
-          context: SolidStudio
+      - setup
       - lint-and-format:
-          context: SolidStudio
           requires:
             - setup
       - tests:
-          context: SolidStudio
           requires:
             - setup
       # - publish:
