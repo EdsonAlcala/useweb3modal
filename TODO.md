@@ -1,15 +1,13 @@
 # useWeb3Wallet
 
-- add instructions for environment variables
 - account details section
+
 - account header
+
 - publish
-- add example
-- publish
-- push to github
-- extend hook to include web3-react properties
 
 - Review this code https://github.com/iearn-finance/ygov-finance/blob/master/src/components/unlock/hooks.jsx
+
 https://github.com/iearn-finance/ygov-finance/blob/master/src/components/unlock/unlock.jsx
 
 - create spending view

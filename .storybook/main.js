@@ -8,16 +8,7 @@ module.exports = {
     "@storybook/addon-essentials"
   ],
   webpackFinal: async (config, { configType }) => {
-    // const fileLoaderRule = config.module.rules.find(rule => rule.test && rule.test.test('.svg'));
-    // fileLoaderRule.exclude = /\.svg$/;
-
-    // config.module.rules.push({
-    //   test: /\.svg$/,
-    //   enforce: 'pre',
-    //   loader: require.resolve('@svgr/webpack'),
-    // });
-
-    // console.log("Config module rules", config.module.rules)
+    // Here you can customize Webpack
     return config;
   }
 }

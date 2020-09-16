@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useWeb3React, UnsupportedChainIdError, Web3ReactProvider } from '@web3-react/core'
-import { Web3Provider } from '@ethersproject/providers'
+import { useWeb3React, UnsupportedChainIdError } from '@web3-react/core'
 
 import ThemeProvider from '../../theme'
 
@@ -25,20 +24,14 @@ interface ModalErrorProps {
     error: Error
 }
 
-export const getLibrary = (provider: any): Web3Provider => {
-    const library = new Web3Provider(provider)
-    library.pollingInterval = 15000
-    return library
-}
-
 const ModalErrorView: React.FC<ModalErrorProps> = ({ error }) => {
     return (
         <React.Fragment>
             {error instanceof UnsupportedChainIdError ? (
                 <h5>Please connect to the appropriate Ethereum network.</h5>
             ) : (
-                'Error connecting. Try refreshing the page.'
-            )}
+                    'Error connecting. Try refreshing the page.'
+                )}
         </React.Fragment>
     )
 }
@@ -49,10 +42,10 @@ export const Wallet = () => {
     return (
         <ThemeProvider>
             <ContentWrapper>
-                <Web3ReactProvider getLibrary={getLibrary}>
-                    {error && <ModalErrorView error={error} />}
-                    {!error && <WalletProviderGrid />}
-                </Web3ReactProvider>
+
+                {error && <ModalErrorView error={error} />}
+                {!error && <WalletProviderGrid />}
+
             </ContentWrapper>
         </ThemeProvider>
     )

@@ -40,8 +40,6 @@ export const WalletProviderGrid: React.FC<{}> = () => {
     const [pendingError, setPendingError] = useState<boolean>()
 
     const tryActivation = async (connector: AbstractConnector | undefined) => {
-        const isMetamask = (window as any).ethereum && (window as any).ethereum.isMetaMask
-        console.log('Is metamask', isMetamask)
         console.log('Calling try activation')
         setPendingWallet(connector) // set wallet for pending view
         setWalletView(WALLET_VIEWS.PENDING)
@@ -53,7 +51,6 @@ export const WalletProviderGrid: React.FC<{}> = () => {
 
         connector &&
             activate(connector, undefined, true).catch((error) => {
-                console.log('Error', error)
                 if (error instanceof UnsupportedChainIdError) {
                     activate(connector) // a little janky...can't use setError because the connector isn't set
                 } else {

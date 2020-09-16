@@ -1,10 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { UnsupportedChainIdError, useWeb3React } from '@web3-react/core'
+import { useWeb3React, UnsupportedChainIdError } from '@web3-react/core'
 
-import ThemeProvider from '../../theme'
 import { Wallet } from '../wallet'
-
 import { Modal } from './Modal'
 import Close from './x.svg'
 
@@ -67,29 +65,28 @@ const CloseColor = styled.img`
 
 const Title = styled.div``
 
+
 export const ModalWallet: React.FC<IModalWalletProps> = ({ isOpen, onClose }) => {
-    const { error } = useWeb3React() // active, account, connector, activate,
+    const { error } = useWeb3React()
 
     return (
-        <ThemeProvider>
-            <Modal isOpen={isOpen} onDismiss={onClose} minHeight={false} maxHeight={90}>
-                <Content>
-                    <Header>
-                        <HeaderRow>
-                            <CloseIcon onClick={onClose}>
-                                <CloseColor src={Close} alt="close icon" />
-                            </CloseIcon>
-                            {!error && <Title>Connect to a wallet</Title>}
-                            {error && (
-                                <Title>
-                                    {error instanceof UnsupportedChainIdError ? 'Wrong Network' : 'Error connecting'}
-                                </Title>
-                            )}
-                        </HeaderRow>
-                    </Header>
-                    <Wallet />
-                </Content>
-            </Modal>
-        </ThemeProvider>
+        <Modal isOpen={isOpen} onDismiss={onClose} minHeight={false} maxHeight={90}>
+            <Content>
+                <Header>
+                    <HeaderRow>
+                        <CloseIcon onClick={onClose}>
+                            <CloseColor src={Close} alt="close icon" />
+                        </CloseIcon>
+                        {!error && <Title>Connect to a wallet</Title>}
+                        {error && (
+                            <Title>
+                                {error instanceof UnsupportedChainIdError ? 'Wrong Network' : 'Error connecting'}
+                            </Title>
+                        )}
+                    </HeaderRow>
+                </Header>
+                <Wallet />
+            </Content>
+        </Modal>
     )
 }
