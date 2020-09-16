@@ -4,18 +4,24 @@
 
 - account header
 
-- publish
+- set NPM Token in circle
 
 - Review this code https://github.com/iearn-finance/ygov-finance/blob/master/src/components/unlock/hooks.jsx
 
-https://github.com/iearn-finance/ygov-finance/blob/master/src/components/unlock/unlock.jsx
+- https://github.com/iearn-finance/ygov-finance/blob/master/src/components/unlock/unlock.jsx
 
 - create spending view
+
 - Web3ReactManager
+
 - eagerconnect?
+
 - active, account, connector, activate, error
+
 - active state?
+
 - Define the other views (account view, connect view)
+
 - add husky
 
 Views
@@ -36,8 +42,6 @@ const [pendingWallet, setPendingWallet] = useState<AbstractConnector | undefined
 - Define error views
 
 const [pendingError, setPendingError] = useState<boolean>()
-
-- extend the api for connect button and account status? 
 
 - fix window types
 
