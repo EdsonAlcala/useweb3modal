@@ -1,0 +1,92 @@
+version: 2.0
+
+aliases:
+  - &nodejs-docker-image
+    - image: circleci/node:10.16.3
+  
+  - &restore_cache
+    restore_cache:
+      name: Restore Yarn Package Cache
+      keys:
+        - yarn-packages-{{ checksum "yarn.lock" }}
+
+jobs:
+  setup:
+    docker: *nodejs-docker-image
+    steps:
+      - checkout
+      - *restore_cache
+      - run:
+          name: Install Dependencies
+          command: |
+            yarn install --immutable
+      - save_cache: 
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+  
+  lint-and-format: 
+    docker: *nodejs-docker-image
+    steps:
+      - checkout
+      - *restore_cache
+      - run:
+          name: Lint
+          command: yarn lint
+  
+  tests:
+    docker: *nodejs-docker-image
+    steps:
+      - checkout
+      - *restore_cache
+      - run:
+          name: Run tests with JUnit as reporter
+          command: yarn test
+          environment:
+            JEST_JUNIT_OUTPUT: "reports/junit/js-test-results.xml"
+      - store_test_results:
+          path: reports/junit
+      - store_artifacts:
+          path: reports/junit
+
+  publish: 
+    docker: *nodejs-docker-image
+    steps:
+      - checkout
+      - *restore_cache
+      - run: 
+          name: Compile all
+          command: yarn compile
+      - run: 
+          name: Discard changes // Truffle BUG
+          command: git stash
+      - run: 
+          name: Prepare
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
+      - run:
+          name: Publish all
+          command: yarn publish
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - setup:
+          context: SolidStudio
+      - tslint-and-format:
+          context: SolidStudio
+          requires:
+            - setup
+      - tests:
+          context: SolidStudio
+          requires:
+            - setup
+      - publish:
+          context: SolidStudio
+          requires:
+            - lint-and-format
+            - tests
+          filters:
+            branches:
+              only: master
