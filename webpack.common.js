@@ -7,8 +7,9 @@ module.exports = {
     output: {
         filename: 'useModalWallet.js',
         path: path.resolve(__dirname, 'dist'),
-        library: 'useModalWallet',
-        libraryTarget: 'umd'
+        library: 'usemodalwallet',
+        libraryTarget: 'umd',
+        umdNamedDefine: true
     },
     module: {
         rules: [
