@@ -64,31 +64,17 @@ jobs:
           name: Build
           command: yarn compile
 
-  # deploy: 
-  #   <<: *defaults
-  #   steps:
-  #     - checkout
-  #     - *restore_cache
-  #     - run:
-  #         name: Deploy
-  #         command: yarn deploy
-  # publish: 
-  #   docker: *nodejs-docker-image
-  #   steps:
-  #     - checkout
-  #     - *restore_cache
-  #     - run: 
-  #         name: Compile all
-  #         command: yarn compile
-  #     - run: 
-  #         name: Discard changes // Truffle BUG
-  #         command: git stash
-  #     - run: 
-  #         name: Prepare
-  #         command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
-  #     - run:
-  #         name: Publish all
-  #         command: yarn publish
+  publish: 
+    <<: *defaultssssss
+    steps:
+      - checkout
+      - *restore_cache
+      - run: 
+          name: Compile all
+          command: yarn compile
+      - run:
+          name: Publish all
+          command: yarn publish
 
 workflows:
   version: 2
@@ -101,11 +87,12 @@ workflows:
       - tests:
           requires:
             - setup
-      # - publish:
-      #     context: SolidStudio
-      #     requires:
-      #       - lint-and-format
-      #       - tests
-      #     filters:
-      #       branches:
-      #         only: master
+      - build:
+          requires:
+            - tests
+      - publish:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
