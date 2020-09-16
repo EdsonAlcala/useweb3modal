@@ -9,16 +9,11 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         library: 'usemodalwallet',
         libraryTarget: 'umd',
-        umdNamedDefine: true
+        umdNamedDefine: true,
+        globalObject: "this"
     },
     module: {
         rules: [
-            {
-                test: /\.(png|svg|jpg|gif)$/,
-                use: [
-                    'file-loader'
-                ]
-            },
             {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader'],
@@ -27,7 +22,20 @@ module.exports = {
                 test: /\.tsx?$/,
                 use: 'ts-loader',
                 exclude: /node_modules/,
-            }]
+            },
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                use: [
+                    {
+                        loader: "url-loader",
+                        options: {
+                            limit: 65535,
+                            name: "static/media/[name].[hash:8].[ext]"
+                        }
+                    }
+                ]
+            }
+        ]
     },
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
