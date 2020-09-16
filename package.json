@@ -1,6 +1,6 @@
 {
   "name": "usemodalwallet",
-  "version": "2.1.2",
+  "version": "2.2.1",
   "description": "Web3 React with Wallet Modal integrated.",
   "main": "dist/useModalWallet.js",
   "types": "dist/index.d.ts",
