@@ -13,6 +13,15 @@ Same as Web3 React but we include an additional hook:
 
 Example:
 
+### Configuration
+
+Environment variables
+
+- REACT_APP_PORTIS_ID
+
+- REACT_APP_FORTMATIC_KEY
+
+- REACT_APP_NETWORK_URL
 
 ### Getting Started
 
@@ -52,6 +61,8 @@ or
 - Allow users to configure views [ ]
 
 - Publish storybook as github page [ ]
+
+- Improve theming interface and docs [ ]
 
 - Check Jest integration https://github.com/typescript-eslint/typescript-eslint/blob/master/docs/getting-started/linting/README.md#plugins
 
