@@ -1,15 +1,15 @@
-import { AbstractConnector } from "@web3-react/abstract-connector"
+import { AbstractConnector } from '@web3-react/abstract-connector'
 
 type Image = string
 
-type WalletType = "web" | "mobile"
+type WalletType = 'web' | 'mobile'
 
 export interface IWalletProvider {
-    id: string;
-    name: string;
-    description?: string;
-    type: WalletType;
-    logo: Image;
+    id: string
+    name: string
+    description?: string
+    type: WalletType
+    logo: Image
     href: string | null
     color: string
     mobile?: boolean // to review, taken from uniswap

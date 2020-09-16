@@ -1,4 +1,4 @@
-import React, { useContext, PropsWithChildren, useState } from "react"
+import React, { useContext, PropsWithChildren, useState } from 'react'
 
 import { ModalWallet } from './modal-wallet'
 
@@ -8,11 +8,13 @@ interface IModalWalletProvider {
 }
 
 const ModalWalletContext = React.createContext<IModalWalletProvider>({
-    showWalletModal: () => { },
-    hideWalletModal: () => { }
+    showWalletModal: () => {} /* eslint-disable-line */,
+    hideWalletModal: () => {} /* eslint-disable-line */,
 })
 
-export const ModalWalletProvider: React.FC<PropsWithChildren<{}>> = ({ children }) => {
+interface Props {}
+
+export const ModalWalletProvider: React.FC<PropsWithChildren<Props>> = ({ children }) => {
     const [isModalWalletOpen, setIsModalWalletOpen] = useState(false)
 
     const showWalletModal = () => {
@@ -25,14 +27,15 @@ export const ModalWalletProvider: React.FC<PropsWithChildren<{}>> = ({ children 
 
     const [context, setContext] = useState({
         showWalletModal: showWalletModal,
-        hideWalletModal: hideWalletModal
+        hideWalletModal: hideWalletModal,
     })
 
     return (
         <ModalWalletContext.Provider value={context}>
             {children}
             <ModalWallet isOpen={isModalWalletOpen} onClose={hideWalletModal} />
-        </ModalWalletContext.Provider >)
+        </ModalWalletContext.Provider>
+    )
 }
 
 export const getModalWalletContext = (): React.Context<IModalWalletProvider> => {
@@ -45,7 +48,7 @@ export const useWalletModal = () => {
     if (walletContext === null) {
         throw new Error(
             'useWalletModal() can only be used inside of <ModalWalletProvider />, ' +
-            'please declare it at a higher level.'
+                'please declare it at a higher level.',
         )
     }
     return walletContext

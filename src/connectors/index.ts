@@ -12,56 +12,55 @@ const FORMATIC_KEY = process.env.REACT_APP_FORTMATIC_KEY
 const PORTIS_ID = process.env.REACT_APP_PORTIS_ID
 
 enum ChainId {
-  Mainnet = 1,
-  Goerli = 5,
-  Ropsten = 3
+    Mainnet = 1,
+    Goerli = 5,
+    Ropsten = 3,
 }
 
 export const NETWORK_CHAIN_ID: number = parseInt(process.env.REACT_APP_CHAIN_ID ?? '1')
 
 if (typeof NETWORK_URL === 'undefined') {
-  throw new Error(`REACT_APP_NETWORK_URL must be a defined environment variable`)
+    throw new Error(`REACT_APP_NETWORK_URL must be a defined environment variable`)
 }
 
 export const network = new NetworkConnector({
-  urls: { [NETWORK_CHAIN_ID]: NETWORK_URL }
+    urls: { [NETWORK_CHAIN_ID]: NETWORK_URL },
 })
 
 let networkLibrary: Web3Provider | undefined
 
 export function getNetworkLibrary(): Web3Provider {
-  return (networkLibrary = networkLibrary ?? new Web3Provider(network.provider as any))
+    return (networkLibrary = networkLibrary ?? new Web3Provider(network.provider as any))
 }
 
 export const injected = new InjectedConnector({
-  supportedChainIds: [ChainId.Mainnet, ChainId.Goerli]
+    supportedChainIds: [ChainId.Mainnet, ChainId.Goerli],
 })
 
 // mainnet only
 export const fortmatic = new FortmaticConnector({
-  apiKey: FORMATIC_KEY ?? '',
-  chainId: NETWORK_CHAIN_ID
+    apiKey: FORMATIC_KEY ?? '',
+    chainId: NETWORK_CHAIN_ID,
 })
 
 // mainnet only
 export const portis = new PortisConnector({
-  dAppId: PORTIS_ID ?? '',
-  networks: [NETWORK_CHAIN_ID]
+    dAppId: PORTIS_ID ?? '',
+    networks: [NETWORK_CHAIN_ID],
 })
-
 
 // mainnet only
 export const walletconnect = new WalletConnectConnector({
-  rpc: { 1: NETWORK_URL },
-  bridge: 'https://bridge.walletconnect.org',
-  qrcode: true,
-  pollingInterval: 15000
+    rpc: { 1: NETWORK_URL },
+    bridge: 'https://bridge.walletconnect.org',
+    qrcode: true,
+    pollingInterval: 15000,
 })
 
 // mainnet only
 export const walletlink = new WalletLinkConnector({
-  url: NETWORK_URL,
-  appName: 'Codefi Staking',
-  appLogoUrl:
-    'https://mpng.pngfly.com/20181202/bex/kisspng-emoji-domain-unicorn-pin-badges-sticker-unicorn-tumblr-emoji-unicorn-iphoneemoji-5c046729264a77.5671679315437924251569.jpg'
+    url: NETWORK_URL,
+    appName: 'Codefi Staking',
+    appLogoUrl:
+        'https://mpng.pngfly.com/20181202/bex/kisspng-emoji-domain-unicorn-pin-badges-sticker-unicorn-tumblr-emoji-unicorn-iphoneemoji-5c046729264a77.5671679315437924251569.jpg',
 })

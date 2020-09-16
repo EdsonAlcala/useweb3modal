@@ -5,12 +5,5 @@ import { WALLET_CONNECT } from './wallet-connect'
 import { COINBASE_LINK, WALLET_LINK } from './coinbase-wallet'
 
 export const getAllWalletProviders = () => {
-    return [
-        METAMASK,
-        WALLET_CONNECT,
-        COINBASE_LINK,
-        WALLET_LINK,
-        FORTMATIC,
-        PORTIS
-    ]
+    return [METAMASK, WALLET_CONNECT, COINBASE_LINK, WALLET_LINK, FORTMATIC, PORTIS]
 }
