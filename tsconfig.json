@@ -9,13 +9,15 @@
         "sourceMap": true,
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
-        "moduleResolution": "node"
+        "moduleResolution": "node",
+        "declaration": true
     },
     "include": [
         "src/**/*",
         "custom.d.ts"
     ],
     "exclude": [
-        "node_modules"
+        "node_modules",
+        "src/stories"
     ]
 }
