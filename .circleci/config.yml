@@ -65,7 +65,7 @@ jobs:
           command: yarn compile
 
   publish: 
-    <<: *defaultssssss
+    <<: *defaults
     steps:
       - checkout
       - *restore_cache
