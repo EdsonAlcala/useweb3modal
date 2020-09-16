@@ -52,3 +52,6 @@ or
 - Allow users to configure views [ ]
 
 - Publish storybook as github page [ ]
+
+- Check Jest integration https://github.com/typescript-eslint/typescript-eslint/blob/master/docs/getting-started/linting/README.md#plugins
+
