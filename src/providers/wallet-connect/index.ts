@@ -3,7 +3,6 @@ import { walletconnect } from '../../connectors'
 
 import { IWalletProvider } from "../types";
 
-// @ts-ignore
 import WalletConnectLogo from './walletConnectIcon.svg';
 
 export const WALLET_CONNECT: IWalletProvider = {

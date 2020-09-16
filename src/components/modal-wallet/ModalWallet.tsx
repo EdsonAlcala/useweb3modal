@@ -59,7 +59,7 @@ const CloseIcon = styled.div`
   }
 `
 
-const CloseColor = styled(Close)`
+const CloseColor = styled.img`
   path {
     stroke: ${({ theme }) => theme.text4};
   }
@@ -82,7 +82,7 @@ export const ModalWallet: React.FC<IModalWalletProps> = ({ isOpen, onClose }) =>
         <Header>
           <HeaderRow>
             <CloseIcon onClick={onClose}>
-              <CloseColor />
+              <CloseColor src={Close} alt='close icon' />
             </CloseIcon>
             {!error && <Title>Connect to a wallet</Title>}
             {error && <Title>{error instanceof UnsupportedChainIdError ? 'Wrong Network' : 'Error connecting'}</Title>}

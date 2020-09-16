@@ -2,8 +2,7 @@ import { portis } from '../../connectors'
 
 import { IWalletProvider } from "../types";
 
-// @ts-ignore
-import PortisLogo from './portisIcon.png';
+import PortisLogo from './portisIcon.svg';
 
 export const PORTIS: IWalletProvider = {
     id: "portis",

@@ -2,8 +2,7 @@ import { injected } from '../../connectors'
 
 import { IWalletProvider } from "../types";
 
-// @ts-ignore
-import MetamaskLogo from "./metamaskIcon.png"
+import MetamaskLogo from "./metamaskIcon.svg"
 
 export const METAMASK: IWalletProvider = {
     id: "metamask",

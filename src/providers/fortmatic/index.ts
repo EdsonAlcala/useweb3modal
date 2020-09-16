@@ -2,8 +2,7 @@ import { fortmatic } from '../../connectors'
 
 import { IWalletProvider } from "../types";
 
-// @ts-ignore
-import FortmaticLogo from "./fortmaticIcon.png"
+import FortmaticLogo from "./fortmaticIcon.svg"
 
 export const FORTMATIC: IWalletProvider = {
     id: "fortmatic",
