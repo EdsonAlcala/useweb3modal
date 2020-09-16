@@ -1,6 +1,6 @@
 {
   "name": "usemodalwallet",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Web3 React with Wallet Modal integrated.",
   "main": "dist/useModalWallet.js",
   "repository": "git@github.com:EdsonAlcala/useweb3modal.git",
