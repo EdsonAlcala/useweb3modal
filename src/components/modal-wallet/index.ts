@@ -1,1 +1,1 @@
-export * from './ModalWallet'
+export { ModalWallet } from './ModalWallet'

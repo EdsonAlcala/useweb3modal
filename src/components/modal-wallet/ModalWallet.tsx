@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from 'styled-components';
+import { UnsupportedChainIdError, useWeb3React } from '@web3-react/core';
 
+import ThemeProvider from '../../theme'
 import { Wallet } from '../wallet';
 
 import { Modal } from './Modal'
-
 import Close from './x.svg';
-import { UnsupportedChainIdError, useWeb3React } from '@web3-react/core';
 
 interface IModalWalletProps {
   isOpen: boolean
@@ -70,26 +70,29 @@ const Title = styled.div`
 `
 
 export const ModalWallet: React.FC<IModalWalletProps> = ({ isOpen, onClose }) => {
-  const { active, account, connector, activate, error } = useWeb3React()
+  const { error } = useWeb3React() // active, account, connector, activate, 
 
   return (
-    <Modal
-      isOpen={isOpen}
-      onDismiss={onClose}
-      minHeight={false}
-      maxHeight={90}>
-      <Content>
-        <Header>
-          <HeaderRow>
-            <CloseIcon onClick={onClose}>
-              <CloseColor src={Close} alt='close icon' />
-            </CloseIcon>
-            {!error && <Title>Connect to a wallet</Title>}
-            {error && <Title>{error instanceof UnsupportedChainIdError ? 'Wrong Network' : 'Error connecting'}</Title>}
-          </HeaderRow>
-        </Header>
-        <Wallet />
-      </Content>
-    </Modal>
+    <ThemeProvider>
+      <Modal
+        isOpen={isOpen}
+        onDismiss={onClose}
+        minHeight={false}
+        maxHeight={90}>
+        <Content>
+          <Header>
+            <HeaderRow>
+              <CloseIcon onClick={onClose}>
+                <CloseColor src={Close} alt='close icon' />
+              </CloseIcon>
+              {!error && <Title>Connect to a wallet</Title>}
+              {error && <Title>{error instanceof UnsupportedChainIdError ? 'Wrong Network' : 'Error connecting'}</Title>}
+            </HeaderRow>
+          </Header>
+          <Wallet />
+        </Content>
+      </Modal>
+    </ThemeProvider>
   )
 }
+

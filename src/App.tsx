@@ -2,7 +2,6 @@ import React from 'react'
 import ReactDom from 'react-dom'
 
 import { ModalWalletProvider, useWalletModal } from './components'
-import ThemeProvider from './theme'
 
 const App: React.FC<{}> = () => {
     const { showWalletModal } = useWalletModal()
@@ -16,8 +15,7 @@ const App: React.FC<{}> = () => {
     )
 }
 
-ReactDom.render(<ThemeProvider>
+ReactDom.render(
     <ModalWalletProvider>
         <App />
-    </ModalWalletProvider>
-</ThemeProvider >, document.getElementById('root'))
+    </ModalWalletProvider>, document.getElementById('root'))

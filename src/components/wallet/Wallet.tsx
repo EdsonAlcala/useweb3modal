@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { useWeb3React, UnsupportedChainIdError, Web3ReactProvider } from '@web3-react/core';
 import { Web3Provider } from '@ethersproject/providers'
 
+import ThemeProvider from '../../theme'
+
 import { WalletProviderGrid } from './WalletProviderGrid';
 
 export interface IWalletProps {
@@ -46,10 +48,12 @@ export const Wallet = () => {
   const { error } = useWeb3React()
 
   return (
-    <ContentWrapper>
-      <Web3ReactProvider getLibrary={getLibrary}>
-        {error && <ModalErrorView error={error} />}
-        {!error && <WalletProviderGrid />}
-      </Web3ReactProvider>
-    </ContentWrapper>)
+    <ThemeProvider>
+      <ContentWrapper>
+        <Web3ReactProvider getLibrary={getLibrary}>
+          {error && <ModalErrorView error={error} />}
+          {!error && <WalletProviderGrid />}
+        </Web3ReactProvider>
+      </ContentWrapper>
+    </ThemeProvider>)
 }
