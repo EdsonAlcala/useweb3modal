@@ -1,6 +1,6 @@
 {
   "name": "usemodalwallet",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "Web3 React with Wallet Modal integrated.",
   "main": "dist/useModalWallet.js",
   "types": "dist/index.d.ts",
@@ -19,7 +19,7 @@
     "compile": "webpack --config webpack.production.js",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "lint": "eslint .eslintrc.json",
+    "lint": "eslint . --ext .ts",
     "test": "jest --detectOpenHandles --verbose"
   },
   "devDependencies": {
