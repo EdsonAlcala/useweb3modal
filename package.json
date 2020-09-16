@@ -1,6 +1,6 @@
 {
   "name": "usemodalwallet",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "description": "Web3 React with Wallet Modal integrated.",
   "main": "dist/useModalWallet.js",
   "types": "dist/index.d.ts",
@@ -48,8 +48,6 @@
     "html-webpack-plugin": "^4.4.1",
     "jest": "^26.4.2",
     "polished": "^3.6.6",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
     "react-is": "^16.13.1",
     "styled-components": "^5.2.0",
     "ts-jest": "^26.3.0",
@@ -73,6 +71,10 @@
     "react-device-detect": "^1.13.1",
     "react-spring": "^8.0.27",
     "react-use-gesture": "^7.0.16",
-    "usemodalwallet": "^1.7.0"
+    "usemodalwallet": "^1.8.0"
+  },
+  "peerDependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   }
 }
