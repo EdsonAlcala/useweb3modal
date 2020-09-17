@@ -1,8 +1,11 @@
-import React, { useContext, PropsWithChildren, useState } from 'react'
+import React, { useContext, PropsWithChildren, useState, useEffect } from 'react'
 import { useWeb3React, Web3ReactProvider } from '@web3-react/core'
+import { AbstractConnector } from '@web3-react/abstract-connector'
 import { Web3ReactContextInterface } from '@web3-react/core/dist/types'
 import { Web3Provider } from '@ethersproject/providers'
 
+import { ProviderOptions, WalletProviderType } from '../types'
+import { getConnectors } from '../connectors'
 import ThemeProvider from '../theme'
 
 import { ModalWallet } from './modal-wallet'
@@ -11,17 +14,21 @@ interface IModalWalletProvider {
     showWalletModal: () => void
     hideWalletModal: () => void
     useWeb3React: () => Web3ReactContextInterface
+    connectors: Map<WalletProviderType, AbstractConnector>
 }
 
 const ModalWalletContext = React.createContext<IModalWalletProvider>({
     showWalletModal: () => { } /* eslint-disable-line */,
     hideWalletModal: () => { } /* eslint-disable-line */,
-    useWeb3React: useWeb3React
+    useWeb3React: useWeb3React,
+    connectors: new Map<WalletProviderType, AbstractConnector>()
 })
 
-interface Props { }
+interface ModalProviderOptionProps {
+    options: ProviderOptions
+}
 
-export const ModalWalletProvider: React.FC<PropsWithChildren<Props>> = ({ children }) => {
+export const ModalWalletProvider: React.FC<PropsWithChildren<ModalProviderOptionProps>> = ({ children, options }) => {
     const [isModalWalletOpen, setIsModalWalletOpen] = useState(false)
 
     const showWalletModal = () => {
@@ -32,10 +39,13 @@ export const ModalWalletProvider: React.FC<PropsWithChildren<Props>> = ({ childr
         setIsModalWalletOpen(false)
     }
 
+    const connectors = getConnectors(options)
+
     const [context, setContext] = useState({
         showWalletModal: showWalletModal,
         hideWalletModal: hideWalletModal,
-        useWeb3React: useWeb3React
+        useWeb3React: useWeb3React,
+        connectors: connectors
     })
 
     return (

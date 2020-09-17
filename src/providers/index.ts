@@ -1,4 +1,3 @@
-export * from './types'
 export * from './fortmatic'
 export * from './metamask'
 export * from './portis'

@@ -5,10 +5,11 @@ import { AbstractConnector } from '@web3-react/abstract-connector'
 
 import styled from 'styled-components'
 
-import { getAllWalletProviders, IWalletProvider } from '../../providers'
-import { injected, portis } from '../../connectors'
+import { getAllWalletProviders } from '../../providers'
 
 import { WalletProvider } from './WalletProvider'
+import { useWalletModal } from '../useModalWalletProvider'
+import { IWalletProvider, WalletProviderType } from '../../types'
 
 const Wrapper = styled.div`
     display: flex;
@@ -58,23 +59,25 @@ export const WalletProviderGrid: React.FC<{}> = () => {
                 }
             })
     }
+    const { connectors } = useWalletModal()
 
     const getWalletProviderComponents = () => {
         const isMetamask = (window as any).ethereum && (window as any).ethereum.isMetaMask // TODO: Review metamask documentation
         console.log('isMetamask', isMetamask)
 
         return getAllWalletProviders().map((item: IWalletProvider) => {
+            const currentWalletConnector = connectors.get(item.id)
+
             if (isMobile) {
                 //disable portis on mobile for now
-                if (item.connector === portis) {
+                if (item.id === WalletProviderType.Portis) {
                     return null
                 }
 
                 if (!(window as any).web3 && !(window as any).ethereum && item.mobile) {
                     return (
-                        //   onClick=
                         <WalletProvider
-                            active={item.connector && item.connector === connector}
+                            active={currentWalletConnector && currentWalletConnector === connector}
                             id={`connect-${item.id}`}
                             key={item.id}
                             icon={item.logo}
@@ -83,7 +86,7 @@ export const WalletProviderGrid: React.FC<{}> = () => {
                             subheader={null}
                             href={item.href}
                             onClick={() => {
-                                item.connector !== connector && !item.href && tryActivation(item.connector)
+                                currentWalletConnector !== connector && !item.href && tryActivation(currentWalletConnector)
                             }}
                         />
                     )
@@ -91,7 +94,7 @@ export const WalletProviderGrid: React.FC<{}> = () => {
                 return null
             }
 
-            if (item.connector === injected) {
+            if (item.id === WalletProviderType.Metamask) {
                 //  don't show injected if there's no injected provider
                 if (!((window as any).web3 || (window as any).ethereum)) {
                     if (item.name === 'MetaMask') {
@@ -131,11 +134,11 @@ export const WalletProviderGrid: React.FC<{}> = () => {
                         subheader=""
                         href={item.href}
                         color={item.color}
-                        active={item.connector === connector}
+                        active={currentWalletConnector === connector}
                         onClick={() => {
-                            item.connector === connector
+                            currentWalletConnector === connector
                                 ? setWalletView(WALLET_VIEWS.ACCOUNT)
-                                : !item.href && tryActivation(item.connector)
+                                : !item.href && tryActivation(currentWalletConnector)
                         }}
                     />
                 )
