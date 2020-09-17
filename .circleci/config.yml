@@ -73,7 +73,7 @@ jobs:
           name: Compile all
           command: yarn compile
       - run: 
-          name: Prepare
+          name: Set NPM token
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
       - run:
           name: Publish all
