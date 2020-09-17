@@ -6,12 +6,12 @@ export interface ProviderOptions {
 }
 
 export enum WalletProviderType {
-    Portis = "portist",
-    Fortmatic = "fortmatic",
-    Metamask = "metamask",
-    Coinbase_Link = "coinbase-link",
-    Coinbase_Wallet = "coinbase-wallet",
-    Wallet_Connect = "wallet-connect"
+    Portis = 'portist',
+    Fortmatic = 'fortmatic',
+    Metamask = 'metamask',
+    Coinbase_Link = 'coinbase-link',
+    Coinbase_Wallet = 'coinbase-wallet',
+    Wallet_Connect = 'wallet-connect',
 }
 
 type Image = string

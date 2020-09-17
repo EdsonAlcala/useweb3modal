@@ -10,5 +10,5 @@ export const WALLET_CONNECT: IWalletProvider = {
     description: 'Connect to Trust Wallet, Rainbow Wallet and more...',
     href: null,
     color: '#4196FC',
-    mobile: true
+    mobile: true,
 }

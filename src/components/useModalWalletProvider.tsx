@@ -18,10 +18,10 @@ interface IModalWalletProvider {
 }
 
 const ModalWalletContext = React.createContext<IModalWalletProvider>({
-    showWalletModal: () => { } /* eslint-disable-line */,
-    hideWalletModal: () => { } /* eslint-disable-line */,
+    showWalletModal: () => {} /* eslint-disable-line */,
+    hideWalletModal: () => {} /* eslint-disable-line */,
     useWeb3React: useWeb3React,
-    connectors: new Map<WalletProviderType, AbstractConnector>()
+    connectors: new Map<WalletProviderType, AbstractConnector>(),
 })
 
 interface ModalProviderOptionProps {
@@ -45,7 +45,7 @@ export const ModalWalletProvider: React.FC<PropsWithChildren<ModalProviderOption
         showWalletModal: showWalletModal,
         hideWalletModal: hideWalletModal,
         useWeb3React: useWeb3React,
-        connectors: connectors
+        connectors: connectors,
     })
 
     return (
@@ -76,7 +76,7 @@ export const useWalletModal = () => {
     if (walletContext === null) {
         throw new Error(
             'useWalletModal() can only be used inside of <ModalWalletProvider />, ' +
-            'please declare it at a higher level.',
+                'please declare it at a higher level.',
         )
     }
     return walletContext

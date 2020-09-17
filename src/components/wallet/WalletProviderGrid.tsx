@@ -86,7 +86,9 @@ export const WalletProviderGrid: React.FC<{}> = () => {
                             subheader={null}
                             href={item.href}
                             onClick={() => {
-                                currentWalletConnector !== connector && !item.href && tryActivation(currentWalletConnector)
+                                currentWalletConnector !== connector &&
+                                    !item.href &&
+                                    tryActivation(currentWalletConnector)
                             }}
                         />
                     )

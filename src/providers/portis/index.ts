@@ -10,5 +10,5 @@ export const PORTIS: IWalletProvider = {
     description: 'Login using Portis hosted wallet',
     href: null,
     color: '#4A6C9B',
-    mobile: true
+    mobile: true,
 }

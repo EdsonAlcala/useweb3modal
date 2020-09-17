@@ -12,7 +12,8 @@ const App: React.FC = () => {
             <button
                 onClick={() => {
                     showWalletModal()
-                }}>
+                }}
+            >
                 Connect to a wallet
             </button>
         </React.Fragment>
@@ -23,7 +24,7 @@ const options: ProviderOptions = {
     formaticKey: process.env.REACT_APP_FORTMATIC_KEY,
     portisId: process.env.REACT_APP_PORTIS_ID,
     networkUrl: process.env.REACT_APP_NETWORK_URL,
-    chainId: parseInt(process.env.REACT_APP_CHAIN_ID, 10)
+    chainId: parseInt(process.env.REACT_APP_CHAIN_ID, 10),
 }
 
 ReactDom.render(

@@ -65,7 +65,6 @@ const CloseColor = styled.img`
 
 const Title = styled.div``
 
-
 export const ModalWallet: React.FC<IModalWalletProps> = ({ isOpen, onClose }) => {
     const { error } = useWeb3React()
 
