@@ -50,6 +50,7 @@
     "eslint-plugin-react-hooks": "^4.1.2",
     "file-loader": "^6.1.0",
     "html-webpack-plugin": "^4.4.1",
+    "husky": "^4.3.0",
     "jest": "^26.4.2",
     "polished": "^3.6.6",
     "prettier": "^2.1.2",
@@ -81,5 +82,10 @@
   "peerDependencies": {
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "yarn lint && yarn test && yarn compile"
+    }
   }
 }
