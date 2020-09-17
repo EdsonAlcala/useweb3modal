@@ -1,4 +1,4 @@
-# Web3 React Wallet
+# Web3 React Modal Wallet
 
 Web3 React with modal wallet integrated.
 
