@@ -1,28 +1,18 @@
 # useWeb3Wallet
 
+- add pending view
+- add error view
+- close modal when successful connection
 - account details section
-
 - account header
 
-- set NPM Token in circle
-
-- Review this code https://github.com/iearn-finance/ygov-finance/blob/master/src/components/unlock/hooks.jsx
-
-- https://github.com/iearn-finance/ygov-finance/blob/master/src/components/unlock/unlock.jsx
-
 - create spending view
-
-- Web3ReactManager
-
-- eagerconnect?
 
 - active, account, connector, activate, error
 
 - active state?
 
 - Define the other views (account view, connect view)
-
-- add husky
 
 Views
   Account (wallet)
@@ -66,3 +56,14 @@ const [pendingError, setPendingError] = useState<boolean>()
         </UpperSection>
       )
     }
+
+Future
+
+- optimize size either by disabling web3 react dependencies or bundling different? 
+...Analyse package
+
+Review
+- Web3ReactManager
+- eagerconnect?
+- Review this code https://github.com/iearn-finance/ygov-finance/blob/master/src/components/unlock/hooks.jsx
+- https://github.com/iearn-finance/ygov-finance/blob/master/src/components/unlock/unlock.jsx
