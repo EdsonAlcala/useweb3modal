@@ -21,7 +21,7 @@ In order to make it work you need to wrap your components with the Web3WalletPro
 The web3-react-wallet exposes a ProviderOptions interface.
 
 ```
-const options: any = {
+const options: ProviderOptions = {
     formaticKey: "XX",
     portisId: "XX",
     networkUrl: "XX",
