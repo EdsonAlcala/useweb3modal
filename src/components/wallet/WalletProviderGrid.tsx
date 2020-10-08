@@ -149,7 +149,7 @@ export const WalletProviderGrid: React.FC<{}> = () => {
     }
 
     return (
-        <Wrapper>
+        <Wrapper className="web3-wallet-wrapper">
             <OptionGrid>{getWalletProviderComponents()}</OptionGrid>
         </Wrapper>
     )

@@ -30,8 +30,8 @@ const ModalErrorView: React.FC<ModalErrorProps> = ({ error }) => {
             {error instanceof UnsupportedChainIdError ? (
                 <h5>Please connect to the appropriate Ethereum network.</h5>
             ) : (
-                'Error connecting. Try refreshing the page.'
-            )}
+                    'Error connecting. Try refreshing the page.'
+                )}
         </React.Fragment>
     )
 }
@@ -41,7 +41,7 @@ export const Wallet = () => {
 
     return (
         <ThemeProvider>
-            <ContentWrapper>
+            <ContentWrapper className="web3-wallet-main-wrapper">
                 {error && <ModalErrorView error={error} />}
                 {!error && <WalletProviderGrid />}
             </ContentWrapper>
