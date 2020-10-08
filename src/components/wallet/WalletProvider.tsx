@@ -37,7 +37,7 @@ const OptionCardLeft = styled.div`
     height: 100%;
 `
 
-const OptionCardClickable = styled(OptionCard as any) <{ clickable?: boolean }>`
+const OptionCardClickable = styled(OptionCard as any)<{ clickable?: boolean }>`
     margin-top: 0;
     &:hover {
         cursor: ${({ clickable }) => (clickable ? 'pointer' : '')};
@@ -121,7 +121,13 @@ export const WalletProvider: React.FC<WalletCardOption> = ({
     color,
 }) => {
     return (
-        <OptionCardClickable id={id} onClick={onClick} clickable={clickable && !active} active={active} className="web3-wallet-option">
+        <OptionCardClickable
+            id={id}
+            onClick={onClick}
+            clickable={clickable && !active}
+            active={active}
+            className="web3-wallet-option"
+        >
             <OptionCardLeft>
                 <HeaderText>
                     {active ? (
@@ -131,8 +137,8 @@ export const WalletProvider: React.FC<WalletCardOption> = ({
                             </GreenCircle>
                         </CircleWrapper>
                     ) : (
-                            ''
-                        )}
+                        ''
+                    )}
                     {header}
                 </HeaderText>
                 {subheader && <SubHeader>{subheader}</SubHeader>}
